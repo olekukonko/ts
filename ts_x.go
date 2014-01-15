@@ -12,23 +12,35 @@ package ts
 import (
 	"syscall"
 	"unsafe"
-	"os"
 )
 
 // Get Windows Size
 func GetSize() (ws Size, err error) {
-
-	_ , _, ec := syscall.Syscall(syscall.SYS_IOCTL,
+	_, _, ec := syscall.Syscall(syscall.SYS_IOCTL,
 		uintptr(syscall.Stdout),
 		uintptr(TIOCGWINSZ),
 		uintptr(unsafe.Pointer(&ws)))
 
-	if ec != 0 {
-		err = os.NewSyscallError("SYS_IOCTL", ec)
-		// Set Default size if OS is unknown
-		if TIOCGWINSZ == 0 {
-			ws = Size{80, 25, 0, 0}
-		}
+	err = getError(ec)
+
+	if TIOCGWINSZ == 0 && err != nil {
+		ws = Size{80, 25, 0, 0}
 	}
 	return ws, err
+}
+
+func getError(ec interface{}) (err error) {
+	switch v := ec.(type) {
+		// Some implementation return syscall.Errno number
+	case syscall.Errno:
+		if v != 0 {
+			err = syscall.Errno(v)
+		}
+		// Some implementation return error
+	case error:
+		err = ec.(error)
+	default:
+		err = nil
+	}
+	return
 }
