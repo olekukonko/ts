@@ -6,7 +6,7 @@ import (
 )
 
 func ExampleGetSize() {
-	size := GetSize()
+	size , _ := GetSize()
 	fmt.Println(size.Col())  // Get Width
 	fmt.Println(size.Row())  // Get Height
 	fmt.Println(size.PosX()) // Get X position
@@ -14,7 +14,11 @@ func ExampleGetSize() {
 }
 
 func TestSize(t *testing.T) {
-	size := GetSize()
+	size , err := GetSize()
+
+	if err != nil {
+		t.Fatal(err)
+	}
 	if size.Col() == 0 || size.Row() == 0 {
 		t.Fatalf("Screen Size Failed")
 	}

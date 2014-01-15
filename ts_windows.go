@@ -3,7 +3,6 @@
 package ts
 
 import (
-	"fmt"
 	"syscall"
 	"unsafe"
 )
@@ -39,18 +38,20 @@ type SMALL_RECT struct {
 	Left, Top, Right, Bottom uint16
 }
 
-func GetSize() Size {
-	var csbi CONSOLE_SCREEN_BUFFER_INFO
-	ret, _, _ := screenBufferInfo.Call(
+func GetSize() (ws Size, err error) {
+	var info CONSOLE_SCREEN_BUFFER_INFO
+	rc, _, err := screenBufferInfo.Call(
 		uintptr(syscall.Stdout),
-		uintptr(unsafe.Pointer(&csbi)))
+		uintptr(unsafe.Pointer(&info)))
 
-	fmt.Println(ret, csbi)
+	if rc == 0 {
+		return ws, err
+	}
 
-	size := Size{csbi.SrWindow.Right,
-		csbi.SrWindow.Bottom,
-		csbi.DwCursorPosition.X,
-		csbi.DwCursorPosition.Y}
+	ws = Size{info.SrWindow.Right,
+		info.SrWindow.Bottom,
+		info.DwCursorPosition.X,
+		info.DwCursorPosition.Y}
 
-	return size
+	return ws, nil
 }
