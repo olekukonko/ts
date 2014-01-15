@@ -1,8 +1,12 @@
 ts
 ==
 
+
+[![Build Status](https://secure.travis-ci.org/bower/bower.png?branch=master)](http://travis-ci.org/bower/bower) [![Views in the last 24 hours](https://sourcegraph.com/api/repos/github.com/olekukonko/ts/counters/views-24h.png)]
+
+
 Simple go Application to get Terminal Size 
-Run `github.com/olekukonko/ts` to download, build, and
+Run `go get github.com/olekukonko/ts` to download, build, and
 
 #### Example
 
