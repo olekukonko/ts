@@ -1,6 +1,5 @@
 // +build !windows
 
-
 package ts
 
 import (

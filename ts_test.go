@@ -1,6 +1,5 @@
 package ts
 
-
 import (
 	"fmt"
 	"testing"
@@ -8,10 +7,10 @@ import (
 
 func ExampleGetSize() {
 	size := GetSize()
-	fmt.Println(size.Col()) // Get Width
-	fmt.Println(size.Row()) // Get Height
-	fmt.Println(size.PosX())   // Get X position
-	fmt.Println(size.PosY())   // Get Y position
+	fmt.Println(size.Col())  // Get Width
+	fmt.Println(size.Row())  // Get Height
+	fmt.Println(size.PosX()) // Get X position
+	fmt.Println(size.PosY()) // Get Y position
 }
 
 func TestSize(t *testing.T) {
