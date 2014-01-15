@@ -24,7 +24,6 @@ func TestSize(t *testing.T) {
 	size, err := GetSize()
 
 	if err != nil {
-		t.
 		t.Fatal(err)
 	}
 	if size.Col() == 0 || size.Row() == 0 {
