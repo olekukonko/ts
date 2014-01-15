@@ -31,13 +31,13 @@ func GetSize() (ws Size, err error) {
 
 func getError(ec interface{}) (err error) {
 	switch v := ec.(type) {
-		// Some implementation return syscall.Errno number
-	case syscall.Errno:
+
+	case syscall.Errno: // Some implementation return syscall.Errno number
 		if v != 0 {
 			err = syscall.Errno(v)
 		}
-		// Some implementation return error
-	case error:
+
+	case error: // Some implementation return error
 		err = ec.(error)
 	default:
 		err = nil

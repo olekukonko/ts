@@ -1,4 +1,4 @@
-// +build linux freebsd netbsd openbsd
+// +build  freebsd netbsd openbsd
 
 // Copyright 2014 Oleku Konko All rights reserved.
 // Use of this source code is governed by a MIT

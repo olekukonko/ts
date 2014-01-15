@@ -2,7 +2,7 @@ ts
 ==
 
 Simple go Application to get Terminal Size 
-
+Run `github.com/olekukonko/ts` to download, build, and
 
 #### Example
 
