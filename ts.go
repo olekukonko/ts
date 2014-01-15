@@ -17,7 +17,7 @@ type Size struct {
 
 // Get Terminal Width
 func (w Size) Col() int {
-	return int(w.row)
+	return int(w.col)
 }
 
 // Get Terminal Height
