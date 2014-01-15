@@ -7,10 +7,8 @@ import (
 	"unsafe"
 )
 
-
-
-
-func NewSize() Size {
+// Get Windows Size
+func GetSize() Size {
 	ws := Size{}
 	if TIOCGWINSZ != 0 {
 		syscall.Syscall(syscall.SYS_IOCTL,
