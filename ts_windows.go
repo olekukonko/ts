@@ -1,5 +1,6 @@
 // +build windows
 
+
 package ts
 
 import (
@@ -30,13 +31,13 @@ type CONSOLE_SCREEN_BUFFER_INFO struct {
 // The origin of the coordinate system (0,0) is at the top, left cell of the buffer.
 // See http://msdn.microsoft.com/en-us/library/windows/desktop/ms682119(v=vs.85).aspx
 type COORD struct {
-	X,           Y int16
+	X, Y uint16
 }
 
 // Defines the coordinates of the upper left and lower right corners of a rectangle.
 // See http://msdn.microsoft.com/en-us/library/windows/desktop/ms686311(v=vs.85).aspx
 type SMALL_RECT struct {
-	Left,             Top,             Right,             Bottom int16
+	Left, Top, Right, Bottom uint16
 }
 
 func GetSize() Size {

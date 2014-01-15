@@ -1,5 +1,6 @@
 // +build !windows
 
+
 package ts
 
 import (
@@ -15,8 +16,7 @@ func GetSize() Size {
 			uintptr(0),
 			uintptr(TIOCGWINSZ),
 			uintptr(unsafe.Pointer(&ws)))
-
-		return int(ws.ws_col)
+		return ws
 	}
-	return ws
+	return Size{}
 }
