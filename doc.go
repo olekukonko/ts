@@ -7,7 +7,7 @@
 
 /**
 
-Simple go Application to get Terminal Size. So Many Implementations does not support windows but `ts` has full windows support.
+Simple go Application to get Terminal Size. So Many Implementations do not support windows but `ts` has full windows support.
 Run `go get github.com/olekukonko/ts` to download and install
 
 Installation
