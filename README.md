@@ -13,11 +13,11 @@ package main
 
 import (
 	"fmt"
-	"testing"
+	"github.com/olekukonko/ts"
 )
 
 func main() {
-	size, _ := GetSize()
+	size, _ := ts.GetSize()
 	fmt.Println(size.Col())  // Get Width
 	fmt.Println(size.Row())  // Get Height
 	fmt.Println(size.PosX()) // Get X position
