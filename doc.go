@@ -16,11 +16,20 @@ Minimum requirements are Go 1.1+ with fill Windows support
 
 Example
 
-		size , _  := GetSize()
-		fmt.Println(size.Col())     // Get Width
-		fmt.Println(size.Row())     // Get Height
-		fmt.Println(size.PosX())    // Get X Position
-		fmt.Println(size.PosY())    // Get Y Position
+	package main
+
+	import (
+		"fmt"
+		"github.com/olekukonko/ts"
+	)
+
+	func main() {
+		size, _ := ts.GetSize()
+		fmt.Println(size.Col())  // Get Width
+		fmt.Println(size.Row())  // Get Height
+		fmt.Println(size.PosX()) // Get X position
+		fmt.Println(size.PosY()) // Get Y position
+	}
 
 **/
 
