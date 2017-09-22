@@ -1,30 +1,31 @@
-// +build !windows,!solaris
+// +build solaris
 
-// Copyright 2014 Oleku Konko All rights reserved.
+// Copyright 2017 Oleku Konko All rights reserved.
 // Use of this source code is governed by a MIT
 // license that can be found in the LICENSE file.
 
-// This module is a Terminal API for the Go Programming Language.
+// This module is a Terminal  API for the Go Programming Language.
 // The protocols were written in pure Go and works on windows and unix systems
-
 package ts
 
 import (
 	"syscall"
-	"unsafe"
+	"golang.org/x/sys/unix"
+)
+
+const (
+	TIOCGWINSZ = 21608
 )
 
 // Get Windows Size
 func GetSize() (ws Size, err error) {
-	_, _, ec := syscall.Syscall(syscall.SYS_IOCTL,
-		uintptr(syscall.Stdout),
-		uintptr(TIOCGWINSZ),
-		uintptr(unsafe.Pointer(&ws)))
+	var wsz *unix.Winsize
+	wsz, err = unix.IoctlGetWinsize(syscall.Stdout, TIOCGWINSZ)
 
-	err = getError(ec)
-
-	if TIOCGWINSZ == 0 && err != nil {
+	if err != nil {
 		ws = Size{80, 25, 0, 0}
+	} else {
+		ws = Size{wsz.Row, wsz.Col, wsz.Xpixel, wsz.Ypixel}
 	}
 	return ws, err
 }
