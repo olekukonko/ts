@@ -1,4 +1,4 @@
-// +build !windows,!darwin,!freebsd,!netbsd,!openbsd,!linux,!solaris
+// +build !windows,!darwin,!freebsd,!netbsd,!openbsd,!linux,!solaris,!zos
 
 // Copyright 2014 Oleku Konko All rights reserved.
 // Use of this source code is governed by a MIT
