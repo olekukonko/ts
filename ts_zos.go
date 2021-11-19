@@ -20,7 +20,7 @@ const (
 // Get Windows Size
 func GetSize() (ws Size, err error) {
 	var wsz *unix.Winsize
-	wsz, err = unix.IoctlGetWinsize(syscall.Stdout, unix.TIOCGWINSZ)
+	wsz, err = unix.IoctlGetWinsize(unix.Stdout, unix.TIOCGWINSZ)
 
 	if err != nil {
 		ws = Size{80, 25, 0, 0}
