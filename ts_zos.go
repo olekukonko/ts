@@ -9,7 +9,6 @@
 package ts
 
 import (
-	"syscall"
 	"golang.org/x/sys/unix"
 )
 
