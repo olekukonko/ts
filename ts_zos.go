@@ -12,10 +12,6 @@ import (
 	"golang.org/x/sys/unix"
 )
 
-const (
-	TIOCGWINSZ = 21608
-)
-
 // Get Windows Size
 func GetSize() (ws Size, err error) {
 	var wsz *unix.Winsize
